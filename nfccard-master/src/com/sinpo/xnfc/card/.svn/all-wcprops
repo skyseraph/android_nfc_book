@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/11/trunk/nfcard/src/com/sinpo/xnfc/card
+END
+CardManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/11/trunk/nfcard/src/com/sinpo/xnfc/card/CardManager.java
+END
+OctopusCard.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/9/trunk/nfcard/src/com/sinpo/xnfc/card/OctopusCard.java
+END
+VicinityCard.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/5/trunk/nfcard/src/com/sinpo/xnfc/card/VicinityCard.java
+END

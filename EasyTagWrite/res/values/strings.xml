@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EasyTagWrite</string>
+    <string name="action_settings">NFC Setting</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_about">About</string>
+    
+    <string name="write_ndef_tag_chosse_tips">请选择待写入TAG类型：</string>
+    <string name="write_ndef_tag_save_to_tag">Save PayLoad</string>
+    <string name="write_ndef_tag_write_to_tag">Write to Tag</string>
+    <string name="write_ndef_tag_google_com">google.com</string>
+    <string name="write_ndef_tag_exit">Exit</string>
+    <string name="write_ndef_tag_note">note</string>
+    
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="inquire">询问</string>
+    <string name="nfc_notice2">没发现NFC设备，请确认您的手机支持NFC功能!</string>
+    <string name="nfc_notice3">请确认NFC功能是否开启!</string>
+
+    <string name="dialog_notice">EasyTagWrite © SkySeraph!</string>
+</resources>

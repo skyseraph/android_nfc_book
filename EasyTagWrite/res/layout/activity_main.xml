@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="@string/write_ndef_tag_chosse_tips" />
+
+        <Spinner
+            android:id="@+id/write_ndef_tag_sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp" >
+        </Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <Button
+            android:id="@+id/write_ndef_tag_saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/write_ndef_tag_save_to_tag" >
+        </Button>
+
+        <Button
+            android:id="@+id/write_ndef_tag_writeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/write_ndef_tag_write_to_tag" >
+        </Button>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/write_ndef_tag_et1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/write_ndef_tag_google_com" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/write_ndef_tag_tv1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/write_ndef_tag_note" />
+
+    <EditText
+        android:id="@+id/write_ndef_tag_et2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text=""
+        android:visibility="gone" >
+    </EditText>
+
+    <TextView
+        android:id="@+id/write_ndef_tag_tv2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/write_ndef_tag_note"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/write_ndef_tag_exitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/write_ndef_tag_exit" />
+
+</LinearLayout>

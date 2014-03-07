@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">nfc_wifi_assistant</string>
+    <string name="nfc_settings">NFC Setting</string>
+    <string name="wifi_settings">WiFi Setting</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_about">About</string>
+    
+    <string name="save_to_tag">Save to Tag</string>
+    <string name="SSID">WiFi SSID: </string>
+    <string name="Security">加密类型: </string>
+    <string name="key">WiFi key： </string>
+    
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="inquire">询问</string>
+    <string name="nfc_notice2">没发现NFC设备，请确认您的手机支持NFC功能!</string>
+    <string name="nfc_notice3">请确认NFC功能是否开启!</string>
+    <string name="dialog_notice">NfcWiFiAssistant ©SkySeraph</string>
+
+</resources>
