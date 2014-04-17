@@ -109,7 +109,8 @@ public class MainActivity extends Activity {
         // item clicked
         {
             case R.id.action_settings:
-                // Intent setnfc = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+                // Intent setnfc = new
+                // Intent(Settings.ACTION_WIRELESS_SETTINGS);
                 Intent setnfc = new Intent(Settings.ACTION_NFC_SETTINGS);
                 startActivity(setnfc);
                 break;
@@ -132,51 +133,55 @@ public class MainActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        // get NFC object
-        Tag detectTag = getIntent().getParcelableExtra(NfcAdapter.EXTRA_TAG);
-        // validate that this tag can be written
-        if (supportedTechs(detectTag.getTechList())) {
-            switch (tagTypeFlag) {
-                case 0:// ABSOLUTE_URI
-                    NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_ABSOLUTE_URI(payloadStr, false);
-                    // writeNdefMessageToTag(NDEFMsg2Write, detectTag); // By Function
-                    new WriteTask(this, NDEFMsg2Write, detectTag).execute(); // By
-                                                                             // AsyncTask
-                                                                             // Class
-                    break;
-                case 1:// MIME_MEDIA
-                    NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_MIME_MEDIA(payloadStr,
-                            "application/skyseraph.nfc_demo", false);
-                    // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
-                    new WriteTask(this, NDEFMsg2Write, detectTag).execute();
-                    break;
-                case 2:// RTD_TEXT
-                    NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_RTD_TEXT(payloadStr, false,
-                            false);
-                    // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
-                    new WriteTask(this, NDEFMsg2Write, detectTag).execute();
-                    break;
-                case 3:// RTD_URI
-                    NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_RTD_URI(payloadStr, (byte)0x01,
-                            false);
-                    // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
-                    new WriteTask(this, NDEFMsg2Write, detectTag).execute();
-                    break;
-                case 4:// EXTERNAL_TYPE
-                    NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_EXTERNAL_TYPE(payloadStr, false);
-                    // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
-                    new WriteTask(this, NDEFMsg2Write, detectTag).execute();
-                    break;
-                default:// RTD_URI
-                    NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_RTD_URI(payloadStr, (byte)0x01,
-                            false);
-                    // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
-                    new WriteTask(this, NDEFMsg2Write, detectTag).execute();
-                    break;
+        if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(getIntent().getAction())) {
+            LogUtil.i(MyConstant.TAG, TAG_ASSIST + "ACTION_TECH_DISCOVERED");
+            // get NFC object
+            Tag detectTag = getIntent().getParcelableExtra(NfcAdapter.EXTRA_TAG);
+            // validate that this tag can be written
+            if (supportedTechs(detectTag.getTechList())) {
+                switch (tagTypeFlag) {
+                    case 0:// ABSOLUTE_URI
+                        NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_ABSOLUTE_URI(payloadStr, false);
+                        // writeNdefMessageToTag(NDEFMsg2Write, detectTag); // By
+                        // Function
+                        new WriteTask(this, NDEFMsg2Write, detectTag).execute(); // By
+                                                                                 // AsyncTask
+                                                                                 // Class
+                        break;
+                    case 1:// MIME_MEDIA
+                        NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_MIME_MEDIA(payloadStr,
+                                "application/skyseraph.nfc_demo", false);
+                        // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
+                        new WriteTask(this, NDEFMsg2Write, detectTag).execute();
+                        break;
+                    case 2:// RTD_TEXT
+                        NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_RTD_TEXT(payloadStr, false,
+                                false);
+                        // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
+                        new WriteTask(this, NDEFMsg2Write, detectTag).execute();
+                        break;
+                    case 3:// RTD_URI
+                        NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_RTD_URI(payloadStr, (byte)0x01,
+                                false);
+                        // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
+                        new WriteTask(this, NDEFMsg2Write, detectTag).execute();
+                        break;
+                    case 4:// EXTERNAL_TYPE
+                        NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_EXTERNAL_TYPE(payloadStr, false);
+                        // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
+                        new WriteTask(this, NDEFMsg2Write, detectTag).execute();
+                        break;
+                    default:// RTD_URI
+                        NDEFMsg2Write = BobNdefMessage.getNdefMsg_from_RTD_URI(payloadStr, (byte)0x01,
+                                false);
+                        // writeNdefMessageToTag(NDEFMsg2Write, detectTag);
+                        new WriteTask(this, NDEFMsg2Write, detectTag).execute();
+                        break;
+                }
+            } else {
+                Toast.makeText(mContext, "This tag type is not supported", Toast.LENGTH_SHORT).show();
             }
-        } else {
-            Toast.makeText(mContext, "This tag type is not supported", Toast.LENGTH_SHORT).show();
-        }
+        } 
     }
 
     @Override
