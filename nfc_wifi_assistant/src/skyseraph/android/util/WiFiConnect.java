@@ -35,6 +35,7 @@ public class WiFiConnect {
         }
         while (wifiManager.getWifiState() == WifiManager.WIFI_STATE_ENABLING) {
             try {
+                LogUtil.e(MyConstant.TAG, TAG_ASSIST + "WIFI_STATE_ENABLING");
                 Thread.currentThread();
                 Thread.sleep(100);
             } catch (InterruptedException ie) {
@@ -50,6 +51,7 @@ public class WiFiConnect {
 
         WifiConfiguration tempConfig = this.IsExsits(SSID);
         if (tempConfig != null) {
+            LogUtil.e(MyConstant.TAG, TAG_ASSIST + "tempConfig != null");
             wifiManager.removeNetwork(tempConfig.networkId);
         }
 
@@ -82,6 +84,7 @@ public class WiFiConnect {
     }
 
     private WifiConfiguration CreateWifiInfo(String SSID, String Password, WifiCipherType Type) {
+        LogUtil.d(MyConstant.TAG, TAG_ASSIST + "CreateWifiInfo Type=" + Type + ",Password="+Password+ ",SSID="+SSID);
         WifiConfiguration config = new WifiConfiguration();
         config.allowedAuthAlgorithms.clear();
         config.allowedGroupCiphers.clear();
@@ -106,16 +109,28 @@ public class WiFiConnect {
             config.wepTxKeyIndex = 0;
         }
         if (Type == WifiCipherType.WIFICIPHER_WPA) {
-            config.preSharedKey = "\"" + Password + "\"";
-            config.hiddenSSID = true;
-            config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
-            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
-            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
-            config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+//            config.preSharedKey = "\"" + Password + "\"";
+//            config.hiddenSSID = true;
+//            config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
+//            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+//            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+//            config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+//            config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+//            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+//            config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+            
+            //WPA/WPA2 Security
+            config.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
             config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
-            // config.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
-            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
             config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+            config.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP104);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+            config.preSharedKey = "\"".concat(Password).concat("\"");
+            
         } else {
             return null;
         }

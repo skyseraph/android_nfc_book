@@ -9,16 +9,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class NfcWiFiAssistant extends Activity {
@@ -98,8 +103,79 @@ public class NfcWiFiAssistant extends Activity {
         mSpinner.setOnItemSelectedListener(new SpinnerXMLSelectedListener());
         mSpinner.setVisibility(View.VISIBLE);
         mSpinner.setSelection(2, true);
-    }
+        
+        mEditText1.setOnEditorActionListener(new OnEditorActionListener() {
 
+            @Override
+            public boolean onEditorAction(TextView paramTextView, int paramInt,
+                    KeyEvent paramKeyEvent) {
+                // TODO Auto-generated method stub
+                ssidString = mEditText1.getText().toString();
+                Toast.makeText(getApplicationContext(), mEditText1.getText().toString(),
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+        mEditText1.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2,
+                    int paramInt3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1,
+                    int paramInt2, int paramInt3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable paramEditable) {
+                // TODO Auto-generated method stub
+                ssidString = mEditText1.getText().toString();
+            }
+        });
+        
+        //
+        mEditText2.setOnEditorActionListener(new OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView paramTextView, int paramInt,
+                    KeyEvent paramKeyEvent) {
+                // TODO Auto-generated method stub
+                keyString = mEditText2.getText().toString();
+                Toast.makeText(getApplicationContext(), mEditText2.getText().toString(),
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+        mEditText2.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2,
+                    int paramInt3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1,
+                    int paramInt2, int paramInt3) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable paramEditable) {
+                // TODO Auto-generated method stub
+                keyString = mEditText2.getText().toString();
+            }
+        });
+    }
+    
     class SpinnerXMLSelectedListener implements OnItemSelectedListener {
         public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
             LogUtil.i(MyConstant.TAG,
@@ -125,7 +201,8 @@ public class NfcWiFiAssistant extends Activity {
 
         }
     }
-
+    
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 100)
